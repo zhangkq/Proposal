@@ -1,0 +1,146 @@
+% $Id: AllegProposal.tex,v 1.8 2000/07/05 21:02:12 culver Exp $
+% AllegProposal.tex
+% by A. Thall
+% 13. Feb 2003
+%
+% Small edits and a few additions made by R. Roos
+% 21 Jan 2007
+% Most particularly, the "box" around the thesis statement has been removed,
+% section titles have been modified. The section named "Prior work II" has
+% been commented out. The \topmargin has been changed to -.5in and the
+% change to \parindent has been commented out.
+% The filename "nausicaa.eps" has been changed to simply "nausicaa" so that
+% pdflatex can be used on the file (and a file named "nausicaa.pdf" has
+% been created using the "epstopdf" command).
+% Several subsections have been added to illustrate subsection usage.
+% The word "comp" has been replaced by "project" or "thesis" throughout.
+% Other small changes have been made.
+%
+% This document provides a sample Senior Project Proposal template for use
+% by students in Allegheny's CS and Applied Computing programs.
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt]{article}
+
+%The following is used by WinEdt to set up cross-referencing to the BibTeX files
+%It is NOT commented out---the comment lets it be simply ignored by non-WinEdt LaTeX compilers
+
+%GATHER{mybibtexDB.bib}
+
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{fancybox}
+\usepackage{listings}
+\usepackage{algo}
+\usepackage{url}
+
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{.25in}
+\setlength{\topmargin}{-.5in}  % changed from -.25 by RSR on 1/21/07
+%\parindent .5in    % commented out by RSR 1/21/07
+
+%put words in the hyphenation statement if you want to enforce
+%how LaTeX should break them (or not) at the end of a line.
+%\hyphenation{repre-sen-tations problems exact linear}
+\hyphenation{itself}
+
+%%%%%
+%% Commented out -- RSR, 1/21/07
+%%%%%
+% The following provides a box to surround the thesis statement
+%\newenvironment{Thesis}%
+%{\begin{Sbox}\begin{minipage}{.95\linewidth}}%
+%{\end{minipage}\end{Sbox}\begin{center}\fbox{\TheSbox}\end{center}}
+
+\title{Adaptive Runtime scheduling Approach for Energy-efficient Data Centres Using Machine learning algorithms}
+\author{Kaiqiang Zhang (zhangkq0413@gmail.com) \\ Prospective supervisor:  Dr. Zheng Wang}
+
+\begin{document}
+
+% You can specify a language and other options for
+% the code-formatting "listings" package
+\lstset{language=C++,basicstyle=\small,
+        stringstyle=\ttfamily,showstringspaces=false}
+
+\singlespace
+\maketitle
+
+\begin{abstract}                % ~350 words max
+Data centres plays a fundemental role in the computing environment-from the Internet to the mobile cloud today. With rising development, the dramatically increasing energy consumption of data centres becomes a vital constraint and causes huge environmental impacts. Therefore, optimisation applications of data centres are demanded for both well computational performance and low energy consumption. From a software point of view, a runtime optimal task-scheduling approach will help multi-core based data centres to schedule target tasks efficiently with few resources and low energy cost. On the other hand, machine learning algorithms have shown the abilities to optimise multi-objective problems while being adaptive to the changeable circumstance in terms of different platforms. Thus, in this proposal, the main goal is to design an adaptive runtime scheduling approach for data centres using machine learning algorithms. Employing machine learning algorithms, the runtime optimisation software, which can be adaptive to changing hardware promotion and various platforms, needs to ensure the computation performance and low energy consuming of data centres.
+\end{abstract}
+
+\doublespace
+% This sets section-numbering to only include Section and Subsection numbers
+\setcounter{secnumdepth}{2}
+
+\section{Introduction}\label{ch:overview}
+%Need of Energy-efficiency:
+Data centres are the facilities for holding computers, communication equipments and huge data storage. As the infrastructure of the modern electronic world, there is a \$50 billion market with an exponential growth rate\cite{bigdatacentre}. However, the energy consumption has become the fundamental issue for data centres\cite{EPAreport}\cite{Energygov}. For instance, the UK spends 3\% of total domestic electricity usage on data centres in, which equals to one nuclear power plant\cite{globalactionplan}. The carbon emission of the world’s data centres is approximate to the carbon footprint of the entire Czech Republic and will be tripled by 2020\cite{GeSI}. With the increasing demand of data centres, the energy efficiency problems draw improving attractions among the world.
+%Need for optimisation software
+\\
+\linebreak
+Hardware engineers are striving to resolve the energy issue through power management techniques in processors\cite{chanandopp}. They developed various power management features, like dynamic voltage, frequency scaling and heterogeneous processors, which have been applied in system components. Unfortunately, there are still no clear clues for software to realise the hardware potential\cite{lookbackandfor}\cite{towardsenergyeff}. Therefore, the data centres are often spend less than 20\% of the entire power consumption to perform the useful work, i.e. almost 80\% of the data centres power usage is wasted\cite{thecaseforepc}. 
+However, energy efficiency improvement for data centres is challenging. In detail, the hardware resources are often conservatively provisioned for rare utilisation peaks because of inability to predict the load peaks accurately\cite{energy-aware}\cite{towardsenergyeff}. Since machines operate on the peak power mode when it is unnecessary, this leads to energy waste in underutilised systems. On the other hand, server applications are currently hard-coded and optimised for a fully utilised system, but energy efficiency generally degrades outside that range\cite{towardsenergyeff}\cite{autodatacentre}. Thus, techniques that can tailor programs according to workload and resource changes are essential for energy efficiency\cite{towardsenergyeff}. Additionally, servers are truly multi-tasking environment, where thousands of tasks running at the same time, competing for shared resources, often with the support of virtualisation technology\cite{energy-effcloud}. This certainly creates huge difficulties for software power optimisation. The situation becomes more difficult as more and more heterogeneous hardware are used nowadays\cite{aview}. Towards energy efficiency data centres, a technique that evolves and adapts to the changing workload and resource and delivers scalable energy-efficient performance is needed.
+\\
+\linebreak
+%Advantages of using machine learning algorithms
+Machine learning provides the possibilities of implementing both of predictive and adaptive managing functions\cite{ma}. Machine learning has been proved for automatically static optimization of paralleling computation by Wang and O'Boyle\cite{wangf}\cite{wangs}. For a static analysis point of view, this intelligent program parallelism method achieves portability among different platforms without professional knowledge\cite{wangs}. It is possible to extend machine learning concepts on workload prediction and runtime scheduling, while adapting to changing environment, e.g. work load, hardware setup, and platforms. With efficient tasks scheduling, the performance of data centres can be improved with less energy usage by reducing recourse over provision.
+
+
+\section{Main Goal and Proposed Research}
+
+The main goal of this PhD research is to develop the software, which can reduce the energy consumption while making programs faster, using machine learning algorithms. Considering such motivations, there are two main tasks to solve this problem: a) develop a precise workload prediction approach; b) intelligent tasks scheduler for optimising the computational resources usage. Due to the complexity of reality and high-speed hardware development, the key point here is ensuring those two functions to be adaptive to changeable hardware and complex situations. Moreover, the investigations around different modelling methods and scheduling approaches, which will help relative multi-core based system study, will be conducted as an important part. The detailed objectives are listed as following:
+\begin{itemize}
+\item
+%Modelling 
+Modelling the data centres systems. Efficient models help to save time for analysis and future computation. As introduced data centres are very complicated systems, it is valuable to develop an efficient model to express the workload, resource usage, and tasks runtime. Such a modelling method has to be available for different systems. In order to achieve an improving performance, the scheduling logs and power measurements need to be considered as key features in the model.  
+\item
+%Prediction
+Workload Prediction approach development. In order to achieve high computing recourse utilisation, an accurate estimation of workload has to be developed as the foundation of optimal tasks scheduling. The predicting accuracy needs to increase overtime with more system information collected. This is expected to achieve through machine learning algorithms, which can provide reliable probabilistic predictions with a certain error tolerance.  
+\item
+%adaptive optimal tasks scheduler
+Adaptive optimal tasks scheduler for data centres. The proposed  tasks scheduling software is required to manage the optimal physical recourse setting and provide program scheduling, including power modes of hardware, server time allocation, tasks distribution and migration. The employed machine learning method should adapt to new circumstances and continuously improve itself in the end-user's environment. The proposed adaptive optimal task scheduler can optimise the recourse use and improve the performance overtime, which will open up new possibilities and challenges.
+\item
+Investigations around different possible scheduling methods. With an appropriate model, task schedule schemes may influence the management efficiency in terms of scheduling time consumption and tasks managing performance. The investigations here are trying to find a scheduling method, which can provide considerable optimisation result for energy-efficiency data centres with high speed. The evaluation will be conducted around different machine learning algorithms (including supervised learning and reinforcement learning) and operation management methods (such as queuing theory, or game theory e.g.\cite{game}). The evaluation result will help the future research to choose appropriate management method on efficient tasks scheduling on not only data centres but also on other multi-core based systems. 
+\end{itemize}
+
+
+\section{Brief Research Plan}\label{sec:timetable}
+The mile stones and matching time consumption is planed as:
+\begin{itemize}
+\item
+Modelling the multiple tasks problem for data centres considering energy consumption and physics recourse management. (6 months)
+\item
+To develop an adaptive accurate perdition of work load in data centres based on machine learning algorithm. The work needs to be conducted with sufficient data and the prediction method is expected to be tested in simulation and real circumstances (The cooperation between companies or data centres is needed). (6 months)
+\item
+Study around the machine learning algorithms \cite{ma}, including reinforcement learning and supervised learning, to realise the way to adaptive optimal tasks scheduling approach. (6 months)
+\item
+Develop the algorithms and exam the performance in simulation based on real time data. (6 months or less)
+\item
+Investigate around different scheduling approaches, including game theory or queuing theory. Evaluation is needed for tasks scheduling in data centres real applications.(6 months or more)
+\item
+Apply the proposed scheduling approach on real systems. There is always a ”gap” between theoretical design and A cooperation between data centres or product companies is highly expected. (6 months)
+\item
+Conduct all finished work, push forward for possible improvements. Prepare and write up the thesis. (6 months)
+\end{itemize}
+
+\section{Research Impacts}\label{sec:conclusion}
+The improvement of the energy efficiency of data centres is a critical issue, which is highlighted by a recent UK government report\cite{ukgov}. The solution to this problem will certainly be a great benefit to companies like AMR\cite{ARM}, IBM\cite{IBM}, and Intel\cite{Intel}. Without solving such energy issue, the data centres have to be constrained by huge power requirement in the future. The proposed adaptive optimal tasks scheduling approach shows the possibilities to resolve the challenging energy embarrassment of data centres.
+\\
+\linebreak
+The proposed adaptive optimisation approach for tasks scheduling is an advance of the energy-efficiency research. Although machine learning has been applied for efficiently optimising program in static environment\cite{wangf}, this will be the first step to apply machine learning algorithm for dynamic optimisation scheduler in multi-core based systems. Such an adaptive optimising approach will suit different platforms and fast promoting hardware design, i.e. the energy-efficiency problem can be solved for a certain long period. During the pursuing of the whole project, the work has to be conducted with data centres and companies. This will certainly enhance the bond between the companies and the university. The investigations around different task scheduling methods provide a guidance for further optimal scheduler problems in multi-core based systems.
+
+\pagebreak
+
+% This includes all references from the BibTeX file in the bibliography
+\nocite{*}
+
+\begin{spacing}{1}
+  \bibliographystyle{plain}
+  \bibliography{mybibtexDB}
+\end{spacing}
+
+\end{document}
