@@ -1,0 +1,59 @@
+\section{Related Work}
+\paragraph{Energy-efficiency for Data Centres}
+\FIXME{Describe the energy issues of data centres and existing hw/software
+techniques}
+
+
+\paragraph{Performance-Energy Tradeoff:} Saving energy without compromising
+performance is increasingly difficult. Even in single task, single
+core systems, energy and performance do not always correlate strongly~\cite{}. 
+One often cannot optimise code to maximise
+performance \emph{and} to minimise energy
+use~\cite{Esmaeilzadeh:2012:LBL:2209249.2209272}. Ideally, program optimisation
+ would respond to changes in the environment, so that a server application, for
+example, would use different program versions depending on the program input, 
+availabilities of hardware resources and other constraints like power cap and
+responsive time. 
+
+\paragraph{Heterogeneous Many-cores:} Heterogeneous may-cores, such as mixed CPU/GPU systems,
+provide potential for
+reducing energy consumption. Some devices can run some tasks more
+efficiently~\cite{Cong:2012}. Currently, the task to core mapping is
+hard-corded when applications are built or is statically
+determined when the program launches~\cite{cc11grewe}. Dynamically adjusting
+the task to core mapping can improve energy efficiency~\cite{4550857}. However,
+we must over come significant challenges to realise this benefit. Tasks must
+be optimised for and scheduled onto different cores and core frequencies must
+be set. Cores in a heterogeneous system have their own energy and performance
+characteristics that will change on a per task basis. Schedules need to be
+reconstructed as tasks enter, exit, or change phase. These challenges require
+the OS to understand how the tasks will respond to different cores and the
+compilation system to tailor the program dynamically in order to fit the
+change of task to core mapping well. We will explore compiler and run-time
+techniques that dynamically adjust the task to core mapping and resource
+allocation and processor frequency in \FIXME{Theme 2}.
+
+\paragraph{Multi-tasking:} Multi-tasking brings a host of problems that we must
+tackle. Tasks will have different resource requirements and will cause
+interference with other tasks~\cite{zheng-cgo}. Prior work on compilers and
+task mapping mainly targets single applications on unloaded machines without
+external workloads~\cite{5375318,Raman:2012} or dedicate servers running one single
+type of applications~\cite{Agarwal:2012:RDC:2228298.2228327}.
+Energy and performance tradeoffs
+on one task must not affect schedule fairness, throughput, responsiveness, etc.
+for other tasks~\cite{Esmaeilzadeh:2012:LBL:2209249.2209272}. Moreover, tasks
+will have different priorities so they will have different goals for the
+energy/performance tradeoff. In Theme 2, we will build an energy efficient
+multi-task scheduler. The scheduler will use the precise workload prediction
+information from \FIXME{Theme 1} to predict the effect of different scheduling decisions
+and to derive an optimised scheduling plan.
+
+\paragraph{Evolving Computing Environment:} New architectures, application
+domains and workloads constantly emerge, making it hard to keep optimisation
+strategies current~\cite{5375327}. Any optimisation system must support fast,
+easy re-tuning. Predictive modelling
+has emerged as a viable means to automate the construction of optimisation
+strategies for homogeneous multi-cores and single applications, outperforming
+human experts, and across architectures~\cite{Stephenson:2003,Wang-pact}. The
+predictive modelling techniques of \FIXME{Themes 1 and 2} will support models that can be
+retrained whenever the environment changes.
