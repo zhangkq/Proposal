@@ -16,15 +16,37 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{url}
 \usepackage{color}
+\usepackage{multicol}
+
+\usepackage{framed}
+\usepackage{xcolor,colortbl}
+
+\definecolor{light-gray}{gray}{0.70}
+\definecolor{shadedgray}{gray}{.9}
+\definecolor{llgray}{gray}{.8}
+\colorlet{shadecolor}{shadedgray}
+\definecolor{grey}{gray}{0.2}
+\definecolor{darkblue}{rgb}{0.27,0.4,0.87}
+
+\definecolor{light-blue}{rgb}{0.95,0.95,0.98}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
 
 
 
 \newcommand\FIXME[1]{\textcolor{red}{FIXME!}\textcolor{red}{#1}}
 
-\setlength{\textheight}{9in}
-\setlength{\textwidth}{6in}
-\setlength{\oddsidemargin}{.25in}
-\setlength{\topmargin}{-.5in}  % changed from -.25 by RSR on 1/21/07
+%\setlength{\textheight}{9in}
+%\setlength{\textwidth}{6in}
+%\setlength{\oddsidemargin}{.25in}
+%\setlength{\topmargin}{-.5in}  % changed from -.25 by RSR on 1/21/07
 %\parindent .5in    % commented out by RSR 1/21/07
 
 %put words in the hyphenation statement if you want to enforce
@@ -43,7 +65,7 @@
 %{\end{minipage}\end{Sbox}\begin{center}\fbox{\TheSbox}\end{center}}
 
 \title{Smart, Adaptive Energy-efficient Data Centre Computing}
-\author{Kaiqiang Zhang (zhangkq0413@gmail.com) \\ Prospective supervisor:  Dr. Zheng Wang}
+\author{Kaiqiang Zhang, University of Bristol \\zhangkq0413@gmail.com}%\\ Prospective supervisor:  Dr. Zheng Wang}
 
 \begin{document}
 
@@ -62,8 +84,10 @@
 %\input{impact}
 \input{plan}
 
-\begin{spacing}{1}
+\begin{multicols}{2}
+\begin{spacing}{0.9}
   \bibliographystyle{plain}
   \bibliography{mybibtexDB}
 \end{spacing}
+\end{multicols}
 \end{document}
