@@ -1,14 +1,14 @@
 \section{Related Work}
-\paragraph{Energy-efficiency issues for Data Centres}
+\paragraph{~~~~Energy-efficiency issues for Data Centres}
 %\FIXME{Describe the energy issues of data centres and existing hw/software
 %techniques}
-To reduce the huge power consumption, hardware engineers are striving to resolve the energy issue through power management techniques in processors~\cite{chanandopp}. They developed various power management features, like dynamic voltage, frequency scaling and heterogeneous processors, which have been applied in system components. Unfortunately, there are still no clear clues for software to realise the hardware potential~\cite{lookbackandfor}~\cite{towardsenergyeff}. Therefore, almost 80\% of the data centres power usage is wasted~\cite{thecaseforepc}. Towards energy efficiency data centres, the proposed adaptive optimisation system for data centres that evolves and adapts to the changing workload and resource and delivers scalable energy-efficient performance is needed. Such issue is expected to be resolved in an portable optimal approach employing the proposed adaptive scheduler (Theme 1 and Theme 2) and dynamic recompiler tools (Theme 3).
+To reduce the huge power consumption, hardware engineers are striving to resolve the energy issue through power management techniques in processors~\cite{chanandopp}. They developed various power management features, like dynamic voltage, frequency scaling and heterogeneous processors, which have been applied in system components. Unfortunately, there are still no clear clues for software to realise the hardware potential~\cite{lookbackandfor,towardsenergyeff}. Therefore, almost 80\% of the data centres power usage is wasted~\cite{thecaseforepc}. To progress towards energy efficiency data centres, the proposed adaptive optimisation system for data centres that evolves and adapts to the changing workload and resource and delivers scalable energy-efficient performance is needed. Such an issue is expected to be resolved using an portable optimal approach employing the proposed adaptive scheduler (Theme 1 and Theme 2) and dynamic recompiler tools (Theme 3).
 
 
-\paragraph{Heterogeneous Many-cores:} Heterogeneous many-cores, such as mixed CPU/GPU systems,
-provide potential for
-reducing energy consumption. Some devices can run some tasks more
-efficiently~\cite{Cong:2012}. Currently, the task to core mapping is
+\paragraph{~~~~Heterogeneous Many-cores:} Heterogeneous many-cores, such as mixed CPU/GPU systems,
+provide significant potential for
+reducing energy consumption as certain devices can run some tasks more
+efficiently~\cite{Cong:2012}. Currently, the task to core mapping process is
 hard-corded when applications are built or is statically
 determined when the program launches~\cite{cc11grewe}. Dynamically adjusting
 the task to core mapping can improve energy efficiency~\cite{4550857}. However,
@@ -23,7 +23,7 @@ change of task to core mapping well. We will explore compiler and run-time
 techniques that dynamically adjust the task to core mapping and resource
 allocation and processor frequency in Theme 2.
 
-\paragraph{Multi-tasking:} Multi-tasking brings a host of problems that we must
+\paragraph{~~~~Multi-tasking:} Multi-tasking brings a host of problems that we must
 tackle. Tasks will have different resource requirements and will cause
 interference with other tasks~\cite{zheng-cgo}. Prior work on compilers and
 task mapping mainly targets single applications on unloaded machines without
@@ -38,7 +38,7 @@ multi-task scheduler. The scheduler will use the precise workload prediction
 information from Theme 1 to predict the effect of different scheduling decisions
 and to derive an optimised scheduling plan.
 
-\paragraph{Evolving Computing Environment:} New architectures, application
+\paragraph{~~~~Evolving Computing Environment:} New architectures, application
 domains and workloads constantly emerge, making it hard to keep optimisation
 strategies current~\cite{5375327}. Any optimisation system must support fast,
 easy re-tuning. Predictive modelling
@@ -48,7 +48,7 @@ human experts, and across architectures~\cite{Stephenson:2003,Wang-pact}. The
 predictive modelling techniques of Themes 1 and 2 will support models that can be
 retrained whenever the environment changes.
 
-\paragraph{Performance-Energy Tradeoff:} Saving energy without compromising
+\paragraph{~~~~Performance-Energy Tradeoff:} Saving energy without compromising
 performance is increasingly difficult. Even in single task, single
 core systems, energy and performance do not always correlate strongly~\cite{tradeoff}. 
 One often cannot optimise code to maximise
