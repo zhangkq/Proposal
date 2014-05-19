@@ -1,42 +1,42 @@
 \section{Introduction}\label{ch:overview}
 \subsection{Background}
-~~~~Data centres provide the IT infrastructure that powers many of today's computing environments -- from the Internet to the mobile cloud – and is currently a \$50 billion market with an exponential growth rate~\cite{bigdatacentre}. Energy consumption is the fundamental issue for data centres as electricity costs typically make up 70\% of the operating expense of high end servers~\cite{seventy,EPAreport,Energygov}. In the UK data centres account for 3\% of total domestic electricity use, equivalent to one nuclear power station~\cite{globalactionplan}. The total carbon footprint of the world's data centres is approximately the same as the carbon emissions of the entire Czech Republic and will triple by 2020~\cite{GeSI}. Given the increasing demand of computing power of data centres and the rising cost of energy, there is a critical need to optimise data centre applications for both raw performance and energy consumption.
+Data centres provide the IT infrastructure that powers many of today's computing environments -- from the Internet to the mobile cloud – and is currently a \$50 billion market with an exponential growth rate~\cite{bigdatacentre}. Energy consumption is the fundamental issue for data centres as electricity costs typically make up 70\% of the operating expense of high end servers~\cite{seventy,EPAreport,Energygov}. In the UK data centres account for 3\% of total domestic electricity use, equivalent to one nuclear power station~\cite{globalactionplan}. The total carbon footprint of the world's data centres is approximately the same as the carbon emissions of the entire Czech Republic and will triple by 2020~\cite{GeSI}. Given the increasing demand of computing power of data centres and the rising cost of energy, there is a critical need to optimise data centre applications for both raw performance and energy consumption.
 
 Hardware manufacturers have responded to this issue by making enormous strides in managing the power demands of processors~\cite{chanandopp}. Sophisticated power management features, such as dynamic voltage and frequency scaling and heterogeneous processing units, are now placed across system components, hoping that software techniques will be found to make use of them. However, software developers are struggling to cope with this dramatic increase in complexity, the existing tools and languages that they have access to are simply inadequate for this task. As a result, today data centres suffer embarrassing energy inefficiencies: it is not unusual for less than 20\% of the power to be used to perform useful work for data centres~\cite{thecaseforepc}. This situation has to change.
 
 \subsection{Research Challenges}
-~~~~There are a number of challenges that need to be overcome to improve the energy efficiency of data centres. Firstly, the hardware resources are often conservatively provisioned (e.g. machines operate on the peak power mode unnecessarily) for rare utilisation peaks because of an inability to accurately predict the load peaks~\cite{energy-aware,towardsenergyeff}. This leads to energy waste in underutilised systems. Secondly, server applications are currently hard-coded and optimised for a fully utilised system, but energy efficiency generally degrades outside that range~\cite{towardsenergyeff,autodatacentre}. As such, techniques that can dynamically tailor programs according to workload and resource changes are essential for energy efficiency~\cite{towardsenergyeff}. Unfortunately, servers are a truly multi-tasking environment (where thousands of tasks running at the same time, competing for shared resources), often with the support of virtualisation technology~\cite{energy-effcloud}, creating enormous difficulties for software power optimisation. This situation becomes more difficult as more and more heterogeneous hardware is used now days~\cite{aview}. What is needed is a technique that \textbf{evolves and adapts to the changing workload and resource and delivers scalable energy-efficient performance}.
+There are a number of challenges that need to be overcome to improve the energy efficiency of data centres. Firstly, the hardware resources are often conservatively provisioned (e.g. machines operate on the peak power mode unnecessarily) for rare utilisation peaks because of an inability to accurately predict the load peaks~\cite{energy-aware,towardsenergyeff}. This leads to energy waste in underutilised systems. Secondly, server applications are currently hard-coded and optimised for a fully utilised system, but energy efficiency generally degrades outside that range~\cite{towardsenergyeff,autodatacentre}. As such, techniques that can dynamically tailor programs according to workload and resource changes are essential for energy efficiency~\cite{towardsenergyeff}. Unfortunately, servers are a truly multi-tasking environment (where thousands of tasks running at the same time, competing for shared resources), often with the support of virtualisation technology~\cite{energy-effcloud}, creating enormous difficulties for software power optimisation. This situation becomes more difficult as more and more heterogeneous hardware is used now days~\cite{aview}. What is needed is a technique that \textbf{evolves and adapts to the changing workload and resource and delivers scalable energy-efficient performance}.
 
 \subsection{Proposed Research}
 %This research will use predictive modelling techniques to model and predict data centres workloads. It will design a new Linux scheduler to make use of the accurate workload prediction to quickly react to the change of workload demands and perform effective resource provisioning. Furthermore, to harness the potential of dynamic resource scheduling, applications must be tailored to fit the drastically changing computing environment, as a poorly optimised program can overshadow any energy benefits that would have been obtained. To this end, the research will investigate program tuning techniques that enable us to tailor applications on-the-fly (e.g. dynamically replacing the algorithm or data structure as the program runs). On top of these, we would like the system software to catch up with the evolving hardware, applications and workloads and to deliver ``future scalable" performance. To achieve this, I will explore an innovative \textbf{machine-learning-based} approach that self-adapts to future hardware and applications, and improves its performance over time.
-~~~~This research will use predictive modelling techniques to model and predict data centres workloads. It
+This research will use predictive modelling techniques to \textbf{model and predict data centres workloads}. It
 will design a new Linux scheduler to make use of the accurate workload prediction to quickly react to
-the change of workload demands and perform effective resource provisioning. Furthermore, to harness
-the potential of dynamic resource scheduling, applications must be tailored to fit the drastically changing computing 
+the change of workload demands and \textbf{perform effective resource provisioning}. Furthermore, to harness
+the potential of dynamic resource scheduling, applications must be tailored to fit the drastically changing computing
 environment, as a poorly optimised program can overshadow any energy benefits that would
-have been obtained. To this end, the research will investigate program tuning techniques that enable us to
+have been obtained. To this end, the research will investigate \textbf{dynamic recompilation strategies} that enable us to
 tailor applications on-the-fly.
 
-The workload predictor, resource scheduler, and dynamic compilation system will work cooperatively in a way that has never been exploited before. 
-New schedule plans will be created when a task is created or terminates and a change of program phase or \emph{workload pattern (or demand)} is detected. 
-When a task is scheduled to a processor that has different microarchitecture configurations (e.g. cache size, core counts or instruction sets), the just in time compiler 
-will be asked recompile a code version that best suits the targeted hardware and perform hardware-specific optimisation. 
-Runtime program adaption will also be explored for long-running parallel applications. In this case, the scheduler will spread different 
-code versions across multiple parallel threads running on different heterogeneous hardware, and then monitor their progresses to find 
-out the best combination of code versions and hardware settings. Using workload prediction to guide resource scheduling and 
-dynamic recompilation has never been tried before in the heterogeneous, multi-tasking environment, 
-which will necessitate novel techniques to be constructed. 
+The workload model, resource scheduler, and dynamic compilation system will work cooperatively in a way that has never been exploited before.
+New schedule plans will be created when a task is created or terminates and a change of program phase or \emph{workload pattern (or demand)} is detected.
+When a task is scheduled to a processor that has different microarchitecture configurations (e.g. cache size, core counts or instruction sets), the just-in-time compiler
+will be asked to recompile a code version that best suits the targeted hardware and perform hardware-specific optimisation.
+Runtime program adaption will also be explored for long-running parallel applications. In this case, the scheduler will spread different
+code versions across multiple parallel threads running on different heterogeneous hardware, and then monitor their progresses to find
+out the best combination of code versions and hardware settings. Using workload prediction to guide resource scheduling and
+dynamic recompilation has never been tried before in the heterogeneous, multi-tasking environment,
+which will necessitate novel techniques to be constructed.
 
 On top of these, we would like the system software to catch up with the evolving hardware,
-applications and workloads and to deliver ``future scalable" performance. To achieve this, I will explore an innovative 
+applications and workloads and to deliver ``future scalable" performance. To achieve this, I will explore an innovative
 machine-learning-based approach that self-adapts to future hardware and applications, and improves its performance over time.
-To do so, the default compiler and operating system scheduling policies will be opened up to machine learning and they will be constantly 
-updated, using feedbacks collected from the application environment. The framework will periodically analyse the profiling data. If workload 
-patterns or performance results differ significant from historical data or expectations, then the heuristics are out-of-date, which will be updated 
-with the latest profiling data and synthetic workloads. Meanwhile, the framework will periodically check if a program can be optimised in a 
-better way in response to poorer than expected performance or energy consumption with the updated compilation heuristics. 
-In this way, the system will gradually refine itself, producing more closely fitting code with better heuristics, and working towards the optimal over time. 
-Continuous learning has never been attempted in the heterogeneous server computing environment. This new paradigm 
+To do so, the default compiler and operating system scheduling policies will be opened up to machine learning and they will be constantly
+updated, using feedbacks collected from the application environment. The framework will periodically analyse the profiling data. If workload
+patterns or performance results differ significant from historical data or expectations, then the heuristics are out-of-date, which will be updated
+with the latest profiling data and synthetic workloads. Meanwhile, the framework will periodically check if a program can be optimised in a
+better way in response to poorer than expected performance or energy consumption with the updated compilation heuristics.
+In this way, the system will gradually refine itself, producing more closely fitting code with better heuristics, and working towards the optimal over time.
+Continuous learning has never been attempted in the heterogeneous server computing environment. This new paradigm
 with a dynamic, never ending nature is significantly different from the standard machine learning work that has been seen to date~\cite{onlineoptimal}.
 \subsection{Expected Results}
 \begin{shaded}
